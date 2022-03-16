@@ -1,18 +1,11 @@
-import {
-  concatMap,
-  exhaustMap,
-  fromEvent,
-  map,
-  mergeMap,
-  switchMap,
-} from 'rxjs';
+import { fromEvent, map, mergeMap, switchMap } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 const button = document.getElementById('btn');
 const observable = fromEvent(button, 'click').pipe(
-  mergeMap(() => {
-    // mergeMap：両方
-    // Slow3Gモードで2回ボタンをクリックすると、1回目も2回目も実行される。
+  switchMap(() => {
+    // swithMap：後勝ち
+    // Slow3Gモードで2回ボタンをクリックすると、1回目はキャンセルして、2回目が実行される。
     return ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1');
   })
 );
