@@ -25,13 +25,13 @@ forkJoin([name$, nation$, food$]).subscribe((res) => {
 //     subscriber.complete();
 //   }, 3000);
 // });
-
+//
 // const b$ = new Observable((subscriber) => {
 //   setTimeout(() => {
 //     subscriber.error('B was failed');
 //   }, 3000);
 // });
-
+//
 // forkJoin([a$, b$]).subscribe({
 //   next: (value) => {
 //     console.log(value);
